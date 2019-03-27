@@ -11,11 +11,11 @@ public class Arrays {
 	public static void main(String []args) {
 		int[] array = generateArray();
 		Sort sort = new Sort(array);
-		int[] data = sort.bubbleSort();
+		SortData data = sort.bubbleSort();
 
 		// display performance data
-		System.out.println("Original Array Length: " + data[0]);
-		System.out.println("Number of swaps: " + data[1]);
-		System.out.println("Number of comparisons: " + data[2]);
+		System.out.println("Original Array Length: " + data.ogArrayLength);
+		System.out.println("Number of swaps: " + data.swaps);
+		System.out.println("Number of comparisons: " + data.comparisons);
 	}
 }

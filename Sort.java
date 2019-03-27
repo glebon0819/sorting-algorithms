@@ -6,7 +6,7 @@ public class Sort {
         this.array = array;
     }
 
-    public int[] bubbleSort() {
+    public SortData bubbleSort() {
     	int swaps = 0;
     	int lastSwaps = 1;
     	int holder;
@@ -18,6 +18,7 @@ public class Sort {
 	    		int j = i + 1;
 	    		if(j < newArray.length) {
 	    			if(newArray[i] > newArray[j]) {
+
 	    				// swap elements
 	    				holder = newArray[j];
 	    				newArray[j] = newArray[i];
@@ -32,6 +33,20 @@ public class Sort {
     	}
 
     	// return original array length, number of swaps, number of loops
-    	return new int[]{newArray.length, swaps, comparisons};
+    	return new SortData(newArray.length, swaps, comparisons, 'O(n^2)', 'O(n)', 'O(n^2)');
     }
+
+    /*
+    To-Do:
+    bubbleSortBetter
+    insertionSort
+    selectionSort
+    heapSort
+    mergeSort
+    quickSort
+
+    add:
+    memoryUsage?
+    time
+    */
 }
