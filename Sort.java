@@ -1,17 +1,29 @@
 public class Sort {
 	
 	private int[] array;
+    private long startTime;
+    private long endTime;
 
-	Sort(int[] array) { 
-        this.array = array;
+	Sort(int[] inputArray) { 
+        array = inputArray;
+    }
+
+    private static int verify(int[] sortedArray){
+        for(int i = 0; i < (sortedArray.length - 1); i++) {
+            if(sortedArray[i] > sortedArray[i + 1]) {
+                return i;
+            }
+        }
+        return -1;
     }
 
     public SortData bubbleSort() {
-    	int swaps = 0;
-    	int lastSwaps = 1;
-    	int holder;
-    	int[] newArray = this.array;
-    	int comparisons = 0;
+        startTime = System.nanoTime();
+    	long swaps = 0;
+    	long lastSwaps = 1;
+        int holder;
+    	int[] newArray = array;
+    	long comparisons = 0;
     	while(lastSwaps != 0) {
 	    	lastSwaps = 0;
 	    	for(int i = 0; i < newArray.length; i++) {
@@ -31,9 +43,15 @@ public class Sort {
 	    		}
 	    	}
     	}
+        endTime = System.nanoTime();
+        long runTime = endTime - startTime;
+
+        if(verify(newArray) != -1) {
+            System.out.println("Sort failed");
+        }
 
     	// return original array length, number of swaps, number of loops
-    	return new SortData(newArray.length, swaps, comparisons, 'O(n^2)', 'O(n)', 'O(n^2)');
+    	return new SortData(newArray.length, swaps, comparisons, runTime, "O(n^2)", "O(n)", "O(n^2)");
     }
 
     /*

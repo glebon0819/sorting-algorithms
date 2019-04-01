@@ -1,14 +1,16 @@
 public class SortData {
 	public int ogArrayLength;
-	public int swaps;
-	public int comparisons;
+	public long swaps;
+	public long comparisons;
+	public long runTime;
 	public String worstCase;
 	public String bestCase;
-	public String avgCase
+	public String avgCase;
 
-	SortData(int ogArrayLength, int swaps, int comparisons, String worstCase, String bestCase) { 
-        this.originalArrayLength = originalArrayLength;
-        this.swaps = swaps;
-        this.comparisons = comparisons;
+	SortData(int inpArrayLength, long inpSwaps, long inpComparisons, long inpRunTime, String worstCase, String bestCase, String avgCase) { 
+        ogArrayLength = inpArrayLength;
+        swaps = inpSwaps;
+        comparisons = inpComparisons;
+        runTime = inpRunTime;
     }
 }
