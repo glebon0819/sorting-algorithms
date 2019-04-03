@@ -1,13 +1,12 @@
 public class Sort {
-	
 	private int[] array;
     private long startTime;
     private long endTime;
-
 	Sort(int[] inputArray) { 
         array = inputArray;
     }
 
+    // verifies that an int array is sorted from least to greatest
     private static int verify(int[] sortedArray){
         for(int i = 0; i < (sortedArray.length - 1); i++) {
             if(sortedArray[i] > sortedArray[i + 1]) {
@@ -17,6 +16,7 @@ public class Sort {
         return -1;
     }
 
+    // implementation of the bubble sort algorithm on an array of ints
     public SortData bubbleSort() {
         startTime = System.nanoTime();
     	long swaps = 0;
@@ -46,12 +46,13 @@ public class Sort {
         endTime = System.nanoTime();
         long runTime = endTime - startTime;
 
+        // verify that array was successfully sorted
         if(verify(newArray) != -1) {
             System.out.println("Sort failed");
         }
 
-    	// return original array length, number of swaps, number of loops
-    	return new SortData(newArray.length, swaps, comparisons, runTime, "O(n^2)", "O(n)", "O(n^2)");
+    	// return object containing data about the sort
+    	return new SortData("bubbleSort", newArray.length, swaps, comparisons, runTime, "O(n^2)", "O(n)", "O(n^2)");
     }
 
     /*
@@ -62,6 +63,9 @@ public class Sort {
     heapSort
     mergeSort
     quickSort
+
+    benchmark
+    compare
 
     add:
     memoryUsage?

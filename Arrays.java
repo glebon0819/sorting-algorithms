@@ -22,10 +22,6 @@ public class Arrays {
 		SortData data = sort.bubbleSort();
 
 		// display performance data
-		System.out.println("Original Array Length: " + data.ogArrayLength);
-		System.out.println("Number of swaps: " + data.swaps);
-		System.out.println("Number of comparisons: " + data.comparisons);
-		System.out.println("Nanos: " + data.runTime);
-		System.out.println("Run Time: " + (data.runTime / 1000000) + " milliseconds.");
+		data.print();
 	}
 }
