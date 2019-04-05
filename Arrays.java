@@ -19,9 +19,11 @@ public class Arrays {
 	public static void main(String []args) {
 		int[] array = generateArray(10000);
 		Sort sort = new Sort(array);
-		SortData data = sort.bubbleSort();
+		//SortData data = sort.bubbleSort();
 
 		// display performance data
-		data.print();
+		//data.print();
+		SortData[] benchmarkData = sort.benchmark("bubbleSort");
+		benchmarkData[0].print();
 	}
 }

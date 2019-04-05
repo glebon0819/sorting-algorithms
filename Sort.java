@@ -1,3 +1,7 @@
+import java.util.Arrays;
+import java.util.stream.Stream;
+import java.util.stream.IntStream;
+
 public class Sort {
 	private int[] array;
     private long startTime;
@@ -53,6 +57,24 @@ public class Sort {
 
     	// return object containing data about the sort
     	return new SortData("bubbleSort", newArray.length, swaps, comparisons, runTime, "O(n^2)", "O(n)", "O(n^2)");
+    }
+
+    // conducts multiple sorts on arrays of various sizes using the same algorithm, then spits out the data
+    public SortData[] benchmark(String algName) {
+        SortData[] benchmarkData = new SortData[10];
+        int[] ogArray = array;
+        if(algName == "bubbleSort") {
+            for(int i = 0; i < 11; i++) {
+                benchmarkData[i] = bubbleSort();
+                //int[] array = (int[]) ArrayUtils.addAll(array, ogArray);
+                array = IntStream.concat(Arrays.stream(array), Arrays.stream(ogArray)).toArray();
+            }
+            array = ogArray;
+        }
+        else {
+            throw new IllegalArgumentException();
+        }
+        return benchmarkData;
     }
 
     /*
