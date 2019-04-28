@@ -56,7 +56,47 @@ public class Sort {
         }
 
     	// return object containing data about the sort
-    	return new SortData("bubbleSort", newArray.length, swaps, comparisons, runTime, "O(n^2)", "O(n)", "O(n^2)");
+    	return new SortData("Bubble Sort", newArray.length, swaps, comparisons, runTime, "O(n^2)", "O(n)", "O(n^2)");
+    }
+
+    // implementation of the insertion sort algorithm on array of ints
+    public SortData insertionSort() {
+        startTime = System.nanoTime();
+        long swaps = 0;
+        long comparisons = 0;
+        int sorted = 0;
+        int holder;
+        int[] newArray = new int[array.length];
+        while(sorted < (newArray.length)) {
+            if(sorted == 0) {
+                newArray[0] = array[0];
+            }
+            else {
+                int currentIndex = sorted - 1;
+                while(array[sorted] < newArray[currentIndex]) {
+                    comparisons++;
+                    newArray[currentIndex + 1] = newArray[currentIndex];
+                    swaps++;
+                    currentIndex--;
+                    if(currentIndex == -1) {
+                        break;
+                    }
+                }
+                comparisons++;
+                newArray[currentIndex + 1] = array[sorted];
+            }
+            sorted++;
+        }
+        endTime = System.nanoTime();
+        long runTime = endTime - startTime;
+
+        // verify that array was successfully sorted
+        if(verify(newArray) != -1) {
+            System.out.println("Sort failed");
+        }
+
+        // return object containing data about the sort
+        return new SortData("Insertion Sort", newArray.length, swaps, comparisons, runTime, "O(n^2)", "O(n)", "O(n^2)");
     }
 
     // conducts multiple sorts on arrays of various sizes using the same algorithm, then spits out the data
@@ -66,6 +106,14 @@ public class Sort {
         if(algName == "bubbleSort") {
             for(int i = 0; i < 6; i++) {
                 benchmarkData[i] = bubbleSort();
+                //int[] array = (int[]) ArrayUtils.addAll(array, ogArray);
+                array = IntStream.concat(Arrays.stream(array), Arrays.stream(ogArray)).toArray();
+            }
+            array = ogArray;
+        }
+        else if(algName == "insertionSort") {
+            for(int i = 0; i < 6; i++) {
+                benchmarkData[i] = insertionSort();
                 //int[] array = (int[]) ArrayUtils.addAll(array, ogArray);
                 array = IntStream.concat(Arrays.stream(array), Arrays.stream(ogArray)).toArray();
             }

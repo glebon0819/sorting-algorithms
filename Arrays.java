@@ -19,16 +19,17 @@ public class Arrays {
 	public static void main(String []args) {
 		int[] array = generateArray(10000);
 		Sort sort = new Sort(array);
-		//SortData data = sort.bubbleSort();
+		//SortData data = sort.insertionSort();
 
 		// display performance data
 		//data.print();
 		
-		SortData[] benchmarkData = sort.benchmark("bubbleSort");
+		SortData[] benchmarkData = sort.benchmark("insertionSort");
 		benchmarkData[0].print();
 		benchmarkData[1].print();
 		benchmarkData[2].print();
 		benchmarkData[3].print();
 		benchmarkData[4].print();
+		benchmarkData[5].print();
 	}
 }
