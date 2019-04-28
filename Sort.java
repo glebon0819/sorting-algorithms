@@ -61,10 +61,10 @@ public class Sort {
 
     // conducts multiple sorts on arrays of various sizes using the same algorithm, then spits out the data
     public SortData[] benchmark(String algName) {
-        SortData[] benchmarkData = new SortData[10];
+        SortData[] benchmarkData = new SortData[6];
         int[] ogArray = array;
         if(algName == "bubbleSort") {
-            for(int i = 0; i < 11; i++) {
+            for(int i = 0; i < 6; i++) {
                 benchmarkData[i] = bubbleSort();
                 //int[] array = (int[]) ArrayUtils.addAll(array, ogArray);
                 array = IntStream.concat(Arrays.stream(array), Arrays.stream(ogArray)).toArray();

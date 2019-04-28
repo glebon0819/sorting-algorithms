@@ -23,7 +23,12 @@ public class Arrays {
 
 		// display performance data
 		//data.print();
+		
 		SortData[] benchmarkData = sort.benchmark("bubbleSort");
 		benchmarkData[0].print();
+		benchmarkData[1].print();
+		benchmarkData[2].print();
+		benchmarkData[3].print();
+		benchmarkData[4].print();
 	}
 }
