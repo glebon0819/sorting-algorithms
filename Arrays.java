@@ -17,7 +17,7 @@ public class Arrays {
 	}
 
 	public static void main(String []args) {
-		int[] array = generateArray(10000);
+		int[] array = generateWorstArray(10000);
 		Sort sort = new Sort(array);
 		//SortData data = sort.insertionSort();
 

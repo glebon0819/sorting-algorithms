@@ -103,25 +103,19 @@ public class Sort {
     public SortData[] benchmark(String algName) {
         SortData[] benchmarkData = new SortData[6];
         int[] ogArray = array;
-        if(algName == "bubbleSort") {
-            for(int i = 0; i < 6; i++) {
+        for(int i = 0; i < 6; i++) {
+            if(algName == "bubbleSort") {
                 benchmarkData[i] = bubbleSort();
-                //int[] array = (int[]) ArrayUtils.addAll(array, ogArray);
-                array = IntStream.concat(Arrays.stream(array), Arrays.stream(ogArray)).toArray();
             }
-            array = ogArray;
-        }
-        else if(algName == "insertionSort") {
-            for(int i = 0; i < 6; i++) {
+            else if(algName == "insertionSort") {
                 benchmarkData[i] = insertionSort();
-                //int[] array = (int[]) ArrayUtils.addAll(array, ogArray);
-                array = IntStream.concat(Arrays.stream(array), Arrays.stream(ogArray)).toArray();
             }
-            array = ogArray;
+            else {
+                throw new IllegalArgumentException();
+            }
+            array = IntStream.concat(Arrays.stream(array), Arrays.stream(ogArray)).toArray();
         }
-        else {
-            throw new IllegalArgumentException();
-        }
+        array = ogArray;
         return benchmarkData;
     }
 
